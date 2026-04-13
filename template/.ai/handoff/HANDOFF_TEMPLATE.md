@@ -1,0 +1,19 @@
+# Handoff Snapshot
+
+## Current Goal
+...
+
+## What Changed
+- ...
+
+## Key Decisions
+- ...
+
+## Open Issues
+- ...
+
+## Next Steps
+- ...
+
+## Files To Read First
+- ...

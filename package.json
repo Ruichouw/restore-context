@@ -1,0 +1,28 @@
+{
+  "name": "restore-context-cli",
+  "version": "0.2.0",
+  "description": "Reusable project context bootstrap and sync CLI for multi-agent handoff.",
+  "license": "MIT",
+  "type": "commonjs",
+  "keywords": [
+    "context",
+    "handoff",
+    "agent",
+    "codex",
+    "project-template"
+  ],
+  "files": [
+    "scripts",
+    "skill",
+    "template",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "restore-context-init": "scripts/install-restore-context.js",
+    "restore-context-sync": "scripts/sync-context.js",
+    "restore-context-recover": "scripts/recover-context.js",
+    "restore-context-scan-project": "scripts/scan-project-md.js",
+    "restore-context-install-skill": "scripts/install-skill.js"
+  }
+}
