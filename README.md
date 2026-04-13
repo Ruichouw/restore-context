@@ -2,13 +2,11 @@
 
 一个可复用的项目上下文模板，用于多 Agent 交接和上下文恢复。
 
-## 分享给朋友
+## 使用
 
-把这个目录发布到 GitHub 后，你朋友可以 3 步用起来：
 
 ```bash
-git clone https://github.com/<your-org-or-name>/restore-context.git
-cd restore-context
+git clone https://github.com/Ruichouw/restore-context.git
 npm i -g .
 restore-context-install-skill
 ```
@@ -42,7 +40,7 @@ restore-context-recover /path/to/your-project
 先安装一次：
 
 ```bash
-npm i -g git+https://github.com/<your-org-or-name>/restore-context.git
+npm i -g git+https://github.com/Ruichouw/restore-context.git
 restore-context-install-skill
 ```
 
