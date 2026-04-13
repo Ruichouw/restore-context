@@ -83,3 +83,10 @@ restore-context-scan-project .
 - `.ai/decisions.md`（有新决策时）
 - `.ai/context.json`
 - `.ai/handoff/<timestamp>.md`
+
+## 全局CLI命令
+- restore-context-init：在目标项目初始化 .ai/ 模板文件（project.md、current.md、decisions.md、tasks.md、context.json、handoff/）。
+- restore-context-sync：把本轮状态同步到 .ai/current.md、.ai/context.json，并新增一份 .ai/handoff/<timestamp>.md。
+restore-context-recover：读取 .ai 关键文件并输出恢复上下文所需信息，方便新 agent 快速接手。
+- restore-context-scan-project：扫描老项目并自动补全 .ai/project.md（仅在缺失或仍是模板占位时生效）。
+- restore-context-install-skill：把 restore-context skill 安装到 ~/.codex/skills，让 agent 更容易按这套规则执行“补充上下文/更新上下文”。
