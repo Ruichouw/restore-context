@@ -1,10 +1,10 @@
 # restoreContext
 
-Reusable project memory pack for multi-agent handoff and context recovery.
+一个可复用的项目上下文模板，用于多 Agent 交接和上下文恢复。
 
-## Share With Friends
+## 分享给朋友
 
-If you publish this folder to GitHub, your friends can use it in 3 steps:
+把这个目录发布到 GitHub 后，你朋友可以 3 步用起来：
 
 ```bash
 git clone https://github.com/<your-org-or-name>/restore-context.git
@@ -13,23 +13,23 @@ npm i -g .
 restore-context-install-skill
 ```
 
-Then in any project directory:
+然后在任意项目目录执行：
 
 ```bash
 restore-context-init . --project-name my-project
 ```
 
-## Contents
+## 目录说明
 
-- `template/.ai/`: baseline project memory files copied into each new project
-- `scripts/install-restore-context.js`: install the `.ai` skeleton into a target project
-- `scripts/sync-context.js`: update `.ai/current.md`, `.ai/context.json`, and a handoff snapshot
-- `scripts/recover-context.js`: read the current project memory and print a recovery bundle
-- `scripts/scan-project-md.js`: scan a legacy project and bootstrap `.ai/project.md` when it is missing or still template-like
-- `scripts/install-skill.js`: install the bundled `restore-context` skill into `~/.codex/skills`
-- `skill/restore-context/`: lightweight Codex skill for consistent agent behavior
+- `template/.ai/`：每个新项目都会复制进去的基础上下文文件
+- `scripts/install-restore-context.js`：在目标项目中初始化 `.ai` 骨架
+- `scripts/sync-context.js`：更新 `.ai/current.md`、`.ai/context.json` 并生成 handoff 快照
+- `scripts/recover-context.js`：读取并输出当前项目上下文恢复信息
+- `scripts/scan-project-md.js`：扫描老项目，在 `.ai/project.md` 缺失或仍是模板占位时自动补全
+- `scripts/install-skill.js`：把 `restore-context` skill 安装到 `~/.codex/skills`
+- `skill/restore-context/`：用于约束 Agent 上下文补充行为的轻量 Skill
 
-## Quick Start
+## 快速开始
 
 ```bash
 restore-context-init /path/to/your-project --project-name your-project
@@ -37,16 +37,16 @@ restore-context-sync /path/to/your-project --goal "Ship auth refresh fix" --summ
 restore-context-recover /path/to/your-project
 ```
 
-## Global CLI (No Local Folder Required)
+## 全局 CLI（项目目录无需包含本仓库）
 
-Install once:
+先安装一次：
 
 ```bash
 npm i -g git+https://github.com/<your-org-or-name>/restore-context.git
 restore-context-install-skill
 ```
 
-Then in any project directory:
+之后在任意项目目录执行：
 
 ```bash
 restore-context-init . --project-name your-project
@@ -54,34 +54,34 @@ restore-context-sync . --goal "Current goal" --summary "What changed this round"
 restore-context-recover .
 ```
 
-For legacy repositories:
+老项目可额外执行：
 
 ```bash
 restore-context-scan-project .
 ```
 
-## Suggested Flow
+## 推荐流程
 
-1. Run `install-restore-context.js` once for each new project.
-2. After each work round, tell the agent `补充上下文` (or `更新上下文` / `生成交接`) so the `restore-context` skill updates `.ai/*`.
-3. Ask any new agent to read `.ai/project.md`, `.ai/current.md`, `.ai/decisions.md`, and the latest handoff file.
-4. Optionally install the bundled skill into your Codex skills directory.
+1. 每个新项目先执行一次 `restore-context-init`。
+2. 每轮工作后对 Agent 说 `补充上下文`（或 `更新上下文` / `生成交接`），让 `restore-context` skill 更新 `.ai/*`。
+3. 新 Agent 接手时，先读取 `.ai/project.md`、`.ai/current.md`、`.ai/decisions.md` 和最新 handoff 文件。
+4. 如需自动命中 skill，确保执行过 `restore-context-install-skill`。
 
-## Manual Agent Trigger (Recommended)
+## 手动触发（推荐）
 
-The primary workflow is agent-driven, not hook-driven.
+主流程是 Agent 驱动，不依赖 hook。
 
-Use short commands like:
+常用口令：
 
 - `补充上下文`
 - `更新上下文`
 - `记录本轮进展`
 - `生成交接`
 
-When triggered, the agent should apply the `restore-context` skill and update:
+触发后，Agent 应按 skill 规则更新：
 
-- `.ai/project.md` only when it is missing or still template-like
+- `.ai/project.md`（仅在缺失或仍是模板占位时自动补全）
 - `.ai/current.md`
-- `.ai/decisions.md` (when decisions changed)
+- `.ai/decisions.md`（有新决策时）
 - `.ai/context.json`
 - `.ai/handoff/<timestamp>.md`
